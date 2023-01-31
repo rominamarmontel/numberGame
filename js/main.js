@@ -2,6 +2,7 @@ let currentNum = 1
 
 class Card {
   constructor() {
+    this.score = 0
     this.li = document.createElement("li")
     this.li.classList.add("clicked")
     this.li.addEventListener('click', () => {
@@ -20,9 +21,10 @@ class Card {
     } else {
       currentNum = 1
     }
-    if (currentNum === 5) {
+    if (currentNum === 10) {
       clearInterval(intervalId)
       this.youWin()
+      this.displayScore()
     }
     // else {
     //   alert("You loose!")
@@ -36,13 +38,17 @@ class Card {
   youWin() {
     const board = document.getElementById("board")
     board.classList.add("win")
-    return
+  }
+  displayScore() {
+    this.score += 10
+    const scoreElement = document.getElementById("score > span")
+    scoreElement.textContent = `${this.score}`
   }
 }
 class Board {
   constructor() {
     this.cardArray = []
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 10; i++) {
       this.cardArray.push(new Card(i))
     }
     this.setToBoard()
@@ -54,7 +60,7 @@ class Board {
     })
   }
   startGame() {
-    const number = [1, 2, 3, 4]
+    const number = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     this.cardArray.forEach(card => {
       const num = number.splice(Math.floor(Math.random() * number.length), 1)[0]
       card.removeClicked(num)
@@ -66,7 +72,7 @@ function counter() {
   let countdown = endTime - new Date().getTime()
   if (countdown < 0) {
     clearInterval(intervalId)
-    countdown = 5 * 1000
+    countdown = 10 * 1000
     btn.disabled = false
     btn.classList.remove('inactive')
   }
@@ -78,17 +84,21 @@ function counter() {
   timer.textContent = `${secondsFormatted}:${centiFormatted}`
 }
 
+
 let endTime
 let intervalId
 const timer = document.getElementById('timer')
 const newBoard = new Board()
 const btn = document.getElementById("btn")
 
+
 btn.addEventListener("click", () => {
   newBoard.startGame()
-  endTime = new Date().getTime() + 5 * 1000
+  endTime = new Date().getTime() + 10 * 1000
 
     btn.disabled = true;
     btn.classList.add('inactive')
     intervalId = setInterval(counter, 100)
 })
+
+
