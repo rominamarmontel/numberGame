@@ -1,12 +1,11 @@
 let currentNum = 1
 
-
 class Card {
   constructor() {
     this.li = document.createElement("li")
     this.li.classList.add("clicked")
     this.li.addEventListener('click', () => {
-      console.log("hi")
+      //console.log("hi")
       this.checkIfOk()
     })
   }
