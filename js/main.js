@@ -20,8 +20,9 @@ class Card {
     } else {
       currentNum = 1
     }
-    if (currentNum === 4) {
-      clearTimeout(timeoutId);
+    if (currentNum === 5) {
+      clearInterval(intervalId)
+      this.youWin()
     }
     // else {
     //   alert("You loose!")
@@ -31,6 +32,11 @@ class Card {
     //   alert("You Win!!")
     //   currentNum = 1
     // }
+  }
+  youWin() {
+    const board = document.getElementById("board")
+    board.classList.add("win")
+    return
   }
 }
 class Board {
@@ -56,13 +62,33 @@ class Board {
   }
 }
 
+function counter() {
+  let countdown = endTime - new Date().getTime()
+  if (countdown < 0) {
+    clearInterval(intervalId)
+    countdown = 5 * 1000
+    btn.disabled = false
+    btn.classList.remove('inactive')
+  }
+  const totalSeconds = Math.floor(countdown / 1000)
+  const centi = Math.floor((countdown % 1000) / 10)
+  const seconds = totalSeconds % 60;
+  const secondsFormatted = String(seconds).padStart(2, '0')
+  const centiFormatted = String(centi).padStart(2, '0')
+  timer.textContent = `${secondsFormatted}:${centiFormatted}`
+}
+
+let endTime
+let intervalId
+const timer = document.getElementById('timer')
 const newBoard = new Board()
 const btn = document.getElementById("btn")
+
 btn.addEventListener("click", () => {
   newBoard.startGame()
+  endTime = new Date().getTime() + 5 * 1000
+
+    btn.disabled = true;
+    btn.classList.add('inactive')
+    intervalId = setInterval(counter, 100)
 })
-
-//addEventListener quand on creer la carte
-//si c'est clique si c'est la premier carde dans cardArry, si oui, on enleve sinon on perd
-//quand cardArray est vide on gagne
-
