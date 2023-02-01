@@ -1,37 +1,63 @@
 body {
+  margin: 0;
   background: rgb(69, 210, 241);
   color: #fff;
   font-family: 'Courier New', sans-serif;
   font-size: 16px;
   font-weight: bold;
 }
-
-#container {
-  /* 80px * 4 + 10px * 3 */
-  width: 330px;
-  margin: 0 auto;
-  padding: 0;
+header {
+  width: 100%;
+}
+#first {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap:9rem;
 }
 #score span{
   font-size: 50px;
   color: #f44336;
 }
-#first {
+#timer {
+  margin-bottom: 8px;
+  font-size: 50px;
+  text-align: center;
+}
+main{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
-
-#board {
+#container {
+  width: 350px;
+  margin: 0 auto;
+  padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0 0 8px;
-  padding: 10px;
-  background: #fff;
-  border-radius: 4px;
+  flex-direction: column;
+  align-items: center;
 }
-#board.win {
+#monkey-left .coconut{
+  width: 350px;
+  height: 650px;
+  position: relative;
+}
+.monkey {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+}
+#monkey-right img{
+  width: 350px;
+  height: 650px;
+} 
+/* .penguin{
+  width: 500px;
+  height: 200px;
+} */
+#board {
+  width: 500PX;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -39,32 +65,37 @@ body {
   padding: 10px;
   background: rgb(232, 230, 117);
   border-radius: 4px;
-  box-shadow: 4px 4px 4px 0 #9d9110;
+  align-items: center;
+}
+#board.win {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 10px;
+  background: rgb(247, 69, 46);
+  border-radius: 4px;
+  box-shadow: 4px 4px 4px 0 #f9e2e2;
 }
 #board li {
   background: #00aaff;
-  width: 80px;
-  height: 80px;
-  margin: 10px;
+  width: 140px;
+  height: 140px;
+  margin: 13px;
   cursor: pointer;
   border-radius: 4px;
   text-align: center;
   box-shadow: 0 4px 0 #0088cc;
-  font-size: 40px;
+  font-size: 80px;
+  line-height: 150px;
 }
-
 #board li.clicked {
   background: #ccc;
   box-shadow: none;
 }
-
-#timer {
-  margin-bottom: 8px;
-  font-size: 50px;
-  text-align: center;
-}
-
 #btn {
+  width: 500PX;
+  height: 80px;
   cursor: pointer;
   user-select: none;
   background: #f44336;
@@ -72,6 +103,7 @@ body {
   border-radius: 4px;
   text-align: center;
   box-shadow: 0 4px 0 #d1483e;
+  font-size: 80px;
 }
 
 #btn:active {
