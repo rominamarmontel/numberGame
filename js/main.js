@@ -1,14 +1,19 @@
 let currentNum = 1
 let endTime
 let intervalId
-let score
+
+let monkeyPosition = 80
 const modal1 = document.getElementById('dialog1')
 const modal2 = document.getElementById('dialog2')
+const modal3 = document.getElementById('dialog3')
 const resetbtn1 = document.querySelector('.resetbutton_lost')
 const resetbtn2 = document.querySelector('.resetbutton_win')
+const resetbtn3 = document.querySelector('.resetbutton_newGame')
 const timer = document.getElementById('timer')
 const btn = document.getElementById('btn')
+const monkey = document.querySelector(".monkey")
 
+//modal3.show()
 function againTheGame() {
   const board = document.getElementById("board")
   board.classList.remove("win")
@@ -40,7 +45,6 @@ function againTheGame() {
 
 class Card {
   constructor() {
-    this.score = 0
     this.li = document.createElement('li')
     this.li.classList.add('clicked')
     this.li.addEventListener('click', () => {
@@ -87,15 +91,17 @@ class Card {
   youWin() {
     const board = document.getElementById('board')
     board.classList.add('win')
-    endGameWin()
-  }
-  displayScore() {
-    this.score += 10
-    const scoreElement = document.getElementById('score > span')
-    scoreElement.textContent = `${this.score}`
+    monkeyPosition += 20
+    monkey.style.bottom = monkeyPosition + "%"
+    if (monkeyPosition === 100) {
+      monkey.src = "./images/monkey-win.png"
+      monkeyPosition = 0
+      gameOverWin()
+    } else {
+      endGameWin()
+    }
   }
 }
-
 //------------------------------------------------------------------------------
 class Board {
   constructor() {
@@ -112,6 +118,7 @@ class Board {
     })
   }
   startGame() {
+    monkey.style.bottom = monkeyPosition + "%"
     const number = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     this.cardArray.forEach((card) => {
       const num = number.splice(Math.floor(Math.random() * number.length), 1)[0]
@@ -120,7 +127,6 @@ class Board {
   }
 }
 const newBoard = new Board()
-
 //------------------------------------------------------------------------------
 btn.addEventListener('click', () => {
   newBoard.startGame()
@@ -162,6 +168,11 @@ function endGameWin() {
     modal2.showModal()
   }, 200)
 }
+function gameOverWin() {
+  setTimeout(() => {
+    modal3.showModal()
+  }, 200)
+}
 //------------------------------------------------------------------------------
 resetbtn1.addEventListener('click', () => {
   modal1.close()
@@ -169,6 +180,11 @@ resetbtn1.addEventListener('click', () => {
 })
 resetbtn2.addEventListener('click', () => {
   modal2.close()
+  againTheGame()
+})
+resetbtn3.addEventListener('click', () => {
+  modal3.close()
+  monkey.src = "./images/monkey.png"
   againTheGame()
 })
 //------------------------------------------------------------------------------

@@ -6,24 +6,20 @@ body {
   font-size: 16px;
   font-weight: bold;
 }
+
+/* header */
 header {
   width: 100%;
-}
-#first {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap:9rem;
-}
-#score span{
-  font-size: 50px;
-  color: #f44336;
+  height: 100px;
 }
 #timer {
-  margin-bottom: 8px;
-  font-size: 50px;
-  text-align: center;
+  margin-right: 50px;
+  padding-top: 50px;
+  font-size: 80px;
+  text-align: right;
 }
+
+/* main */
 main{
   display: flex;
   flex-direction: row;
@@ -36,26 +32,25 @@ main{
   flex-direction: column;
   align-items: center;
 }
-#monkey-left .coconut{
+#monkey-left {
+  position: relative;
+}
+
+#monkey-left .coconut {
   width: 350px;
   height: 650px;
-  position: relative;
 }
 .monkey {
   width: 100px;
   height: 100px;
   position: absolute;
-  bottom: 100px;
   left: 100px;
+  bottom: 0;
 }
 #monkey-right img{
   width: 350px;
   height: 650px;
 } 
-/* .penguin{
-  width: 500px;
-  height: 200px;
-} */
 #board {
   width: 500PX;
   display: flex;
@@ -74,7 +69,7 @@ main{
   list-style: none;
   margin: 0 0 8px;
   padding: 10px;
-  background: rgb(245, 112, 40);
+  background: rgb(51, 239, 63);
   border-radius: 4px;
   box-shadow: 4px 4px 4px 0 #555454;
 }
@@ -125,12 +120,12 @@ main{
   font-size: 80px;
   border:outset 6px #d0d1d2;
 }
-
 #btn:active {
   margin-top: 12px;
   box-shadow: none;
 }
 
+/* modal */
 #dialog1 {
   border:none;
   background-color: antiquewhite;
@@ -139,7 +134,6 @@ main{
   text-align: center;
   box-shadow: 0 20px 20px #525050;
 }
-
 #dialog2 {
   border:none;
   background-color: rgb(215, 240, 22);
@@ -159,6 +153,24 @@ main{
   font-size: 30px;
 }
 #dialog2 button{
+  width: 150px;
+  height: 50px;
+  border: none;
+  box-shadow: 0 4px 10px #a9a7a7;
+  border-radius: 5px;
+  background-color: rgb(46, 179, 223);
+  color: #fff;
+  font-size: 30px;
+}
+#dialog3 {
+  border:none;
+  background-color: rgb(246, 151, 206);
+  font-size: 50px;
+  font-family: 'Courier New', sans-serif;
+  text-align: center;
+  box-shadow: 0 20px 20px #525050;
+}
+#dialog3 button{
   width: 150px;
   height: 50px;
   border: none;
