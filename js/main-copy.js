@@ -1,7 +1,6 @@
 let currentNum = 1
 let endTime
 let intervalId
-let score
 const modal1 = document.getElementById('dialog1')
 const modal2 = document.getElementById('dialog2')
 const resetbtn1 = document.querySelector('.resetbutton_lost')
@@ -10,32 +9,22 @@ const timer = document.getElementById('timer')
 const btn = document.getElementById('btn')
 
 function againTheGame() {
-  const board = document.getElementById("board")
-  board.classList.remove("win")
-  board.classList.remove("lost")
-  const li = board.querySelectorAll("li")
-  li.forEach(ele => {
-    if (ele.classList.contains("clear")) {
-      ele.classList.remove("clear")
-      ele.classList.add("clicked")
-      ele.textContent = ""
-      currentNum = 1
-    } else if (ele.classList.contains("lost")) {
-      ele.classList.remove("lost")
-      ele.classList.add("clicked")
-      ele.textContent = ""
-      currentNum = 1
-    } else if (ele.classList.contains("clicked")) {
-      ele.classList.remove("clicked")
-      ele.classList.add("clicked")
-      ele.textContent = ""
-      currentNum = 1
-    } else {
-      ele.textContent = ""
-      ele.classList.add("clicked")
-      currentNum = 1
-    }
-  })
+  return startGame()
+  // currentNum = 1
+  // const board = document.getElementById("board")
+  // board.classList.remove("win")
+  // board.classList.remove("lost")
+  // const li = board.getElementsByTagName("li")
+  // console.log(li)
+  // li.classList.replace("clear", "clicked")
+
+  // console.log(li.innerHTML)
+  // console.log(board)
+
+  // removeClicked()
+  // checkIfOk()
+  // setToBoard()
+  // startGame()
 }
 
 class Card {
@@ -164,10 +153,12 @@ function endGameWin() {
 }
 //------------------------------------------------------------------------------
 resetbtn1.addEventListener('click', () => {
+  console.log('reset')
   modal1.close()
   againTheGame()
 })
 resetbtn2.addEventListener('click', () => {
+  console.log('reset')
   modal2.close()
   againTheGame()
 })
