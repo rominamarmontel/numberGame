@@ -1,4 +1,3 @@
-let currentNum = 1
 
 class Card {
   constructor() {
@@ -6,7 +5,6 @@ class Card {
     this.li = document.createElement("li")
     this.li.classList.add("clicked")
     this.li.addEventListener('click', () => {
-      //console.log("hi")
       this.checkIfOk()
     })
   }
@@ -14,17 +12,27 @@ class Card {
     this.li.classList.remove("clicked")
     this.li.textContent = num
   }
-  checkIfOk() {
+  checkIfOk() {//もしもHTMLの数字が現在の数字と同じなら
+    //li要素にクラスclickedを追加する→グレー
     if (currentNum === Number(this.li.textContent)) {
-      this.li.classList.add("clicked")
-      currentNum++
-    } else {
+      this.li.classList.add("clear")
+      currentNum++//現在の数字に１足す
+    } else {//もしも数字が同じでないなら現在の数字は１のまま
       currentNum = 1
+      this.li.classList.add("lost")
+      this.gameIsOver()
+      return
     }
-    if (currentNum === 10) {
-      clearInterval(intervalId)
+
+
+    // if (clearInterval(intervalId) && currentNum < 10) {
+    //   this.youLost()
+    //   this.endGameLost()
+    // }
+    if (currentNum === 10) {//もしも現在の数字が10になったら
+      clearInterval(intervalId)//カウンターを止める
       this.youWin()
-      this.displayScore()
+      this.endGameWin()
     }
     // else {
     //   alert("You loose!")
@@ -35,9 +43,15 @@ class Card {
     //   currentNum = 1
     // }
   }
+  youLost() {
+    const board = document.getElementById("board")
+    board.classList.add("lost")
+    endGameLost()
+  }
   youWin() {
     const board = document.getElementById("board")
     board.classList.add("win")
+    endGameWin()
   }
   displayScore() {
     this.score += 10
@@ -45,6 +59,7 @@ class Card {
     scoreElement.textContent = `${this.score}`
   }
 }
+
 class Board {
   constructor() {
     this.cardArray = []
@@ -85,12 +100,15 @@ function counter() {
 }
 
 
+let currentNum = 1
+const modal1 = document.getElementById('dialog1')
+const modal2 = document.getElementById('dialog2')
+const resetbtn = document.getElementById('resetbutton')
 let endTime
 let intervalId
 const timer = document.getElementById('timer')
 const newBoard = new Board()
 const btn = document.getElementById("btn")
-
 
 btn.addEventListener("click", () => {
   newBoard.startGame()
@@ -101,4 +119,19 @@ btn.addEventListener("click", () => {
     intervalId = setInterval(counter, 100)
 })
 
+function endGameLost() {
+  setTimeout(() => {//setTimeout関数
+    modal1.showModal()//モダル表示
+  }, 200)
+}
+function endGameWin() {
+  setTimeout(() => {//setTimeout関数
+    modal2.showModal()//モダル表示
+  }, 200)
+}
 
+resetbtn.addEventListener('click', () => {
+  console.log("reset")
+  dialog2.remove()
+  newBoard.setToBoard()
+})
