@@ -1,4 +1,3 @@
-
 class Card {
   constructor() {
     this.score = 0
@@ -19,12 +18,11 @@ class Card {
       currentNum++//現在の数字に１足す
     } else {//もしも数字が同じでないなら現在の数字は１のまま
       currentNum = 1
+      clearInterval(intervalId)
       this.li.classList.add("lost")
-      this.gameIsOver()
-      return
+      this.youLost()
+      this.endGameLost()
     }
-
-
     // if (clearInterval(intervalId) && currentNum < 10) {
     //   this.youLost()
     //   this.endGameLost()
@@ -33,15 +31,14 @@ class Card {
       clearInterval(intervalId)//カウンターを止める
       this.youWin()
       this.endGameWin()
+      currentNum = 1
     }
-    // else {
-    //   alert("You loose!")
-    //   currentNum = 1
-    // }
-    // if (currentNum > 4) {
-    //   alert("You Win!!")
-    //   currentNum = 1
-    // }
+    if (currentNum > 10) {
+      clearInterval(intervalId)
+      this.youLost()
+      this.endGameLost()
+      currentNum = 1
+    }
   }
   youLost() {
     const board = document.getElementById("board")
@@ -59,7 +56,7 @@ class Card {
     scoreElement.textContent = `${this.score}`
   }
 }
-
+//------------------------------------------------------------------------------
 class Board {
   constructor() {
     this.cardArray = []
@@ -83,9 +80,26 @@ class Board {
   }
 }
 
+//------------------------------------------------------------------------------
+let currentNum = 1
+let endTime
+let intervalId
+const newBoard = new Board()
+const modal1 = document.getElementById('dialog1')
+const modal2 = document.getElementById('dialog2')
+const resetbtn1 = document.querySelector('.resetbutton_lost')
+const resetbtn2 = document.querySelector('.resetbutton_win')
+const timer = document.getElementById('timer')
+const btn = document.getElementById("btn")
+
+//------------------------------------------------------------------------------
 function counter() {
   let countdown = endTime - new Date().getTime()
-  if (countdown < 0) {
+  if (countdown <= 0) {
+    const board = document.getElementById("board")
+    board.classList.add("lost")
+    endGameLost()
+    //checkIfOk()
     clearInterval(intervalId)
     countdown = 10 * 1000
     btn.disabled = false
@@ -99,39 +113,36 @@ function counter() {
   timer.textContent = `${secondsFormatted}:${centiFormatted}`
 }
 
-
-let currentNum = 1
-const modal1 = document.getElementById('dialog1')
-const modal2 = document.getElementById('dialog2')
-const resetbtn = document.getElementById('resetbutton')
-let endTime
-let intervalId
-const timer = document.getElementById('timer')
-const newBoard = new Board()
-const btn = document.getElementById("btn")
-
+//------------------------------------------------------------------------------
 btn.addEventListener("click", () => {
   newBoard.startGame()
   endTime = new Date().getTime() + 10 * 1000
 
     btn.disabled = true;
     btn.classList.add('inactive')
-    intervalId = setInterval(counter, 100)
+    intervalId = setInterval(counter, 10)
 })
 
+//------------------------------------------------------------------------------
 function endGameLost() {
-  setTimeout(() => {//setTimeout関数
-    modal1.showModal()//モダル表示
+  setTimeout(() => {
+    modal1.showModal()
   }, 200)
 }
 function endGameWin() {
-  setTimeout(() => {//setTimeout関数
-    modal2.showModal()//モダル表示
+  setTimeout(() => {
+    modal2.showModal()
   }, 200)
 }
-
-resetbtn.addEventListener('click', () => {
+//------------------------------------------------------------------------------
+resetbtn1.addEventListener('click', () => {
   console.log("reset")
-  dialog2.remove()
-  newBoard.setToBoard()
+  modal1.remove()
+  location.reload();
 })
+resetbtn2.addEventListener('click', () => {
+  console.log("reset")
+  modal2.remove()
+  location.reload();
+})
+//------------------------------------------------------------------------------

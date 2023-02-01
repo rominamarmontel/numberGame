@@ -66,6 +66,7 @@ main{
   background: rgb(232, 230, 117);
   border-radius: 4px;
   align-items: center;
+  box-shadow: 4px 4px 4px 0 #555454;
 }
 #board.win {
   display: flex;
@@ -73,9 +74,9 @@ main{
   list-style: none;
   margin: 0 0 8px;
   padding: 10px;
-  background: rgb(247, 69, 46);
+  background: rgb(245, 112, 40);
   border-radius: 4px;
-  box-shadow: 4px 4px 4px 0 #f9e2e2;
+  box-shadow: 4px 4px 4px 0 #555454;
 }
 #board.lost {
   display: flex;
@@ -85,7 +86,7 @@ main{
   padding: 10px;
   background: rgb(118, 115, 115);
   border-radius: 4px;
-  box-shadow: 4px 4px 4px 0 #f9e2e2;
+  box-shadow: 4px 4px 4px 0 #555454;
 }
 #board li {
   background: #00aaff;
@@ -120,8 +121,9 @@ main{
   padding: 8px;
   border-radius: 4px;
   text-align: center;
-  box-shadow: 0 4px 0 #d1483e;
+  /* box-shadow: 0 4px 0 #d6d6d6; */
   font-size: 80px;
+  border:outset 6px #d0d1d2;
 }
 
 #btn:active {
@@ -130,9 +132,12 @@ main{
 }
 
 #dialog1 {
+  border:none;
   background-color: antiquewhite;
   font-size: 50px;
   font-family: 'Courier New', sans-serif;
+  text-align: center;
+  box-shadow: 0 20px 20px #525050;
 }
 
 #dialog2 {
@@ -141,6 +146,17 @@ main{
   font-size: 50px;
   font-family: 'Courier New', sans-serif;
   text-align: center;
+  box-shadow: 0 20px 20px #525050;
+}
+#dialog1 button{
+  width: 150px;
+  height: 50px;
+  border: none;
+  box-shadow: 0 4px 10px #a9a7a7;
+  border-radius: 5px;
+  background-color: rgb(46, 179, 223);
+  color: #fff;
+  font-size: 30px;
 }
 #dialog2 button{
   width: 150px;
