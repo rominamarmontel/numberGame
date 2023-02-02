@@ -1,23 +1,28 @@
+* {
+  overflow: hidden;
+  margin: 0;
+}
 body {
   background-color: #4fe6f9;
   color: rgb(255, 255, 255);
   font-family: 'Courier New', sans-serif;
-  min-height: 100%;
-  margin: 0;
-  background-image: url("../images/23457178.png");
   font-size: 16px;
   font-weight: bold;
+}
+.image_beach {
+  min-width: 100vw;
+  height: 100vh;
+  background-image: url("../images/23457178.png");
   background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center;
   background-size:cover;
-  position: relative;
+  vertical-align: bottom;
 }
 /* header */
 header {
-  width: 100%;
-  height: 50px;
-  z-index: 2;
+  position: relative;
 }
+/* timer */
 #timer {
   margin-right: 50px;
   padding-top: 50px;
@@ -36,6 +41,7 @@ main{
   flex-direction: row;
   align-items: flex-end;
   width: 100%;
+  margin-top: 50px;
 }
 #container {
   width: 50%;
@@ -53,7 +59,7 @@ main{
   align-items: center;
 }
 #monkey-left .coconut {
-  width: 350px;
+  width: 100%;
   height: 650px;
 }
 .title h1 {
@@ -66,7 +72,6 @@ main{
   color: gold;
   text-shadow: 1px 2px 3px #808080;
 }
-
 .monkey {
   width: 100px;
   height: 100px;
@@ -80,7 +85,7 @@ main{
   width: 20%;
 }
 #monkey-right .coconut {
-  width: 350px;
+  width: 100%;
   height: 650px;
   position: relative;
 }
