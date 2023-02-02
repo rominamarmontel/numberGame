@@ -2,7 +2,7 @@ let currentNum = 1
 let endTime
 let intervalId
 
-let monkeyPosition = 80
+let monkeyPosition = 0
 const modal1 = document.getElementById('dialog1')
 const modal2 = document.getElementById('dialog2')
 const modal3 = document.getElementById('dialog3')
@@ -93,7 +93,7 @@ class Card {
     board.classList.add('win')
     monkeyPosition += 20
     monkey.style.bottom = monkeyPosition + "%"
-    if (monkeyPosition === 100) {
+    if (monkeyPosition === 60) {
       monkey.src = "./images/monkey-win.png"
       monkeyPosition = 0
       gameOverWin()
