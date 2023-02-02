@@ -139,6 +139,13 @@ btn.addEventListener('click', () => {
 //   document.getElementById('btn_audio').currentTime = 0; //連続クリックに対応
 //   document.getElementById('btn_audio').play(); //クリックしたら音を再生
 // }
+window.addEventListener('DOMContentLoaded', function(){
+  const audioElement = document.querySelector("audio");
+  audioElement.addEventListener('loadeddata', (e)=> {
+    audioElement.muted = true;
+    audioElement.autoplay = true;
+  });
+});
 //------------------------------------------------------------------------------
 function counter() {
   let countdown = endTime - new Date().getTime()
