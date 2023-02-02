@@ -9,7 +9,10 @@
 
 ## Introduction
 This is my first project with Javascript, CSS and HTML in Ironhack School.<br>
-I chose NUMBER PUSHING GAME for understanding the Class and DOM operation.<br>
+I chose TOUCH THE NUMBERS for understanding the Class and DOM operation.<br>
+To understand how Class and DOM works, the rule of my game had to be easy and simple to play. 
+This is for children 3 to 5 years old. That's why I chose it for my first project of Javascript in IRONHACK school!!
+The rule is to touch numbers quickly from 1 to 9 in order, that's all!!
 
 ### Technology
 ![images](https://user-images.githubusercontent.com/69083631/216301986-b9f9d04e-7cf8-4cbb-a762-1edbd940cafa.png)
@@ -19,13 +22,9 @@ I chose NUMBER PUSHING GAME for understanding the Class and DOM operation.<br>
     - [Classes] : I created two kinds of Classes for Cards (presenting the numbers) and Board (game table).
                         However, splitting the class confused me　because the roles of each class were not clear.This separation was a good opportunity to consider what the role and function　needed of each.
     - [DOM Manipulation]    : To know the differences of the elements, nodes, Root, Parent, Child, Sibling, Descendant is verty important to understand Javascript. It allows me to create, change, or remove elements from the document and I got to know why we have to use DOM for manipulationg document.
-    - [Counting Score]    : You can add products to your cart by specifying the quantity you wish to purchase.
-                        The inventory count is also automatically updated with sales records, so you can immediately see
-                        if an item is available for purchase or not.
-    - [intervalId/clearInterval]         : This option is available only to registered users. Submissions are limited to one
-                        per product, and the number of stars is automatically calculated and changed according to the user's rating.
-    - [Modal]         : This option is available only to registered users. Submissions are limited to one
-                        per product, and the number of stars is automatically calculated and changed according to the user's rating.
+    - [Counting Score]    : I set the monkey climbing coconut tree in stead of using the numbers score.
+    - [intervalId/clearInterval]         : To make a chronometer in digital, I use intervalId.
+    - [Modal]         : To give the end of game, I tried to use Modal function.
 
 ## Authors
 Hiromi VARNIER
