@@ -16,10 +16,9 @@ I chose NUMBER PUSHING GAME for understanding the Class and DOM operation.<br>
 
 ## Features
 
-    - [Classes] : You can find just the product you are looking for by entering keywords
-                        into a search engine. However, at this time, only one keyword is supported, and we plan to
-                        improve this functionality with additional features.
-    - [DOM operation]    : Products and Topics can be edited, deleted, and new ones added from the Admin Panel.
+    - [Classes] : I created two kinds of Classes for Cards (presenting the numbers) and Board (game table).
+                        However, splitting the class confused me　because the roles of each class were not clear.This separation was a good opportunity to consider what the role and function　needed of each.
+    - [DOM Manipulation]    : To know the differences of the elements, nodes, Root, Parent, Child, Sibling, Descendant is verty important to understand Javascript. It allows me to create, change, or remove elements from the document and I got to know why we have to use DOM for manipulationg document.
     - [Counting Score]    : You can add products to your cart by specifying the quantity you wish to purchase.
                         The inventory count is also automatically updated with sales records, so you can immediately see
                         if an item is available for purchase or not.
