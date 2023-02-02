@@ -21,7 +21,6 @@ class Card {
     this.li.addEventListener('click', () => {
       this.checkIfOk()
       btn_audio.play()
-
     })
   }
   removeClicked(num) {
@@ -195,8 +194,3 @@ resetbtn3.addEventListener('click', () => {
   monkey.src = "./images/monkey.png"
   againTheGame()
 })
-
-function audio() {
-  document.getElementById('btn').currentTime = 0; //連続クリックに対応
-  document.getElementById('btn').play(); //クリックしたら音を再生
-}
