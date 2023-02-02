@@ -1,7 +1,6 @@
 let currentNum = 1
 let endTime
 let intervalId
-
 let monkeyPosition = 0
 const modal1 = document.getElementById('dialog1')
 const modal2 = document.getElementById('dialog2')
@@ -12,37 +11,7 @@ const resetbtn3 = document.querySelector('.resetbutton_newGame')
 const timer = document.getElementById('timer')
 const btn = document.getElementById('btn')
 const monkey = document.querySelector(".monkey")
-
-//modal3.show()
-function againTheGame() {
-  const board = document.getElementById("board")
-  board.classList.remove("win")
-  board.classList.remove("lost")
-  const li = board.querySelectorAll("li")
-  li.forEach(ele => {
-    if (ele.classList.contains("clear")) {
-      ele.classList.remove("clear")
-      ele.classList.add("clicked")
-      ele.textContent = ""
-      currentNum = 1
-    } else if (ele.classList.contains("lost")) {
-      ele.classList.remove("lost")
-      ele.classList.add("clicked")
-      ele.textContent = ""
-      currentNum = 1
-    } else if (ele.classList.contains("clicked")) {
-      ele.classList.remove("clicked")
-      ele.classList.add("clicked")
-      ele.textContent = ""
-      currentNum = 1
-    } else {
-      ele.textContent = ""
-      ele.classList.add("clicked")
-      currentNum = 1
-    }
-  })
-}
-
+//------------------------------------------------------------------------------
 class Card {
   constructor() {
     this.li = document.createElement('li')
@@ -56,24 +25,18 @@ class Card {
     this.li.textContent = num
   }
   checkIfOk() {
-    //もしもHTMLの数字が現在の数字と同じなら
-    //li要素にクラスclickedを追加する→グレー
     if (currentNum === Number(this.li.textContent)) {
       this.li.classList.add('clear')
-      currentNum++ //現在の数字に１足す
+      currentNum++
     } else {
-      //もしも数字が同じでないなら現在の数字は１のまま
       clearInterval(intervalId)
       this.li.classList.add('lost')
       this.youLost()
       this.endGameLost()
       currentNum = 1
     }
-
-    //もしも入力数字が10まで達したら
     if (currentNum === 10) {
-      //もしも現在の数字が10になったら
-      clearInterval(intervalId) //カウンターを止める
+      clearInterval(intervalId)
       this.youWin()
       currentNum = 1
     }
@@ -136,6 +99,36 @@ btn.addEventListener('click', () => {
   intervalId = setInterval(counter, 10)
 })
 //------------------------------------------------------------------------------
+//modal3.show()
+function againTheGame() {
+  const board = document.getElementById("board")
+  board.classList.remove("win")
+  board.classList.remove("lost")
+  const li = board.querySelectorAll("li")
+  li.forEach(ele => {
+    if (ele.classList.contains("clear")) {
+      ele.classList.remove("clear")
+      ele.classList.add("clicked")
+      ele.textContent = ""
+      currentNum = 1
+    } else if (ele.classList.contains("lost")) {
+      ele.classList.remove("lost")
+      ele.classList.add("clicked")
+      ele.textContent = ""
+      currentNum = 1
+    } else if (ele.classList.contains("clicked")) {
+      ele.classList.remove("clicked")
+      ele.classList.add("clicked")
+      ele.textContent = ""
+      currentNum = 1
+    } else {
+      ele.textContent = ""
+      ele.classList.add("clicked")
+      currentNum = 1
+    }
+  })
+}
+//------------------------------------------------------------------------------
 function counter() {
   let countdown = endTime - new Date().getTime()
   if (countdown <= 0) {
@@ -154,9 +147,6 @@ function counter() {
   const centiFormatted = String(centi).padStart(2, '0')
   timer.textContent = `${secondsFormatted}:${centiFormatted}`
 }
-
-//-----------------------------------------------------------------------------
-
 //------------------------------------------------------------------------------
 function endGameLost() {
   setTimeout(() => {
@@ -187,4 +177,3 @@ resetbtn3.addEventListener('click', () => {
   monkey.src = "./images/monkey.png"
   againTheGame()
 })
-//------------------------------------------------------------------------------
