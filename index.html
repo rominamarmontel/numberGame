@@ -16,7 +16,10 @@
     <div id="container">
       <ul id="board">
       </ul>
-      <div id="btn">START</div>
+      <div id="btn" onclick="audio()">START</div>
+      <audio id="btn_audio">
+        <source src="./audio/btn_audio.mp3" type="audio/mp3">
+      </audio>
     </div>
     <div id="monkey-right">
       <div class="title"><h1>Win&Win<br>
@@ -46,7 +49,8 @@
     <img src="./images/monkey-win.png" alt="monkey-win">
     <button class="resetbutton_newGame">AGAIN?</button>
   </dialog>
-  
+
+
   <script src="js/main.js"></script>
   <script src="js/monkey.js"></script>
 </body>

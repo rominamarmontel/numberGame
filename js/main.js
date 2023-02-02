@@ -11,6 +11,8 @@ const resetbtn3 = document.querySelector('.resetbutton_newGame')
 const timer = document.getElementById('timer')
 const btn = document.getElementById('btn')
 const monkey = document.querySelector(".monkey")
+const btn_audio = document.getElementById('btn_audio')
+//btn_audio.currentTime = 0
 //------------------------------------------------------------------------------
 class Card {
   constructor() {
@@ -18,6 +20,8 @@ class Card {
     this.li.classList.add('clicked')
     this.li.addEventListener('click', () => {
       this.checkIfOk()
+      btn_audio.play()
+
     })
   }
   removeClicked(num) {
@@ -91,14 +95,6 @@ class Board {
 }
 const newBoard = new Board()
 //------------------------------------------------------------------------------
-btn.addEventListener('click', () => {
-  newBoard.startGame()
-  endTime = new Date().getTime() + 10 * 1000
-  btn.disabled = true
-  btn.classList.add('inactive')
-  intervalId = setInterval(counter, 10)
-})
-//------------------------------------------------------------------------------
 //modal3.show()
 function againTheGame() {
   const board = document.getElementById("board")
@@ -128,6 +124,21 @@ function againTheGame() {
     }
   })
 }
+//------------------------------------------------------------------------------
+btn.addEventListener('click', () => {
+  newBoard.startGame()
+  endTime = new Date().getTime() + 10 * 1000
+  btn.disabled = true
+  btn.classList.add('inactive')
+  intervalId = setInterval(counter, 10)
+  document.getElementById('btn_audio').currentTime = 0;
+  document.getElementById('btn_audio').play();
+})
+//------------------------------------------------------------------------------
+// function audio() {
+//   document.getElementById('btn_audio').currentTime = 0; //連続クリックに対応
+//   document.getElementById('btn_audio').play(); //クリックしたら音を再生
+// }
 //------------------------------------------------------------------------------
 function counter() {
   let countdown = endTime - new Date().getTime()
@@ -177,3 +188,8 @@ resetbtn3.addEventListener('click', () => {
   monkey.src = "./images/monkey.png"
   againTheGame()
 })
+
+function audio() {
+  document.getElementById('btn').currentTime = 0; //連続クリックに対応
+  document.getElementById('btn').play(); //クリックしたら音を再生
+}
