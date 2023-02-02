@@ -226,3 +226,7 @@ main{
   color: #fff;
   font-size: 30px;
 }
+
+#audio_bgm {
+  display: none;
+}
