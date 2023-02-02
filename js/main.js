@@ -52,6 +52,10 @@ class Card {
   youLost() {
     const board = document.getElementById('board')
     board.classList.add('lost')
+    if (monkeyPosition >= 20) {
+      monkeyPosition -= 20
+    }
+      monkey.style.bottom = monkeyPosition + "%"
     endGameLost()
   }
   youWin() {

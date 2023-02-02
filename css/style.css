@@ -177,6 +177,11 @@ main{
 }
 
 /* modal */
+dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+}
 #dialog1 {
   border:none;
   background-color: antiquewhite;
